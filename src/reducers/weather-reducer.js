@@ -2,7 +2,7 @@ import * as c from '../actions/ActionTypes';
 
 let initialState = {
   isLoading: false,
-  headlines: [],
+  weather: [],
   error: null
 }
 
