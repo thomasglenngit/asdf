@@ -1,9 +1,17 @@
 import React from 'react'
 import Layout from '../components/layout'
 
-import Header from '../components/Header'
-import Main from '../components/Main'
-import Footer from '../components/Footer'
+import Header from '../components/Header';
+import Main from '../components/Main';
+import Footer from '../components/Footer';
+import reducer from './../reducers/weather-reducer';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { Provider } from 'react-redux';
+import middlewareLogger from './../middleware/middleware-logger';
+
+const store = createStore(reducer, applyMiddleware(middlewareLogger, thunkMiddleware));
+
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -91,6 +99,7 @@ class IndexPage extends React.Component {
 
   render() {
     return (
+      <Provider store={store}>
       <Layout location={this.props.location}>
         <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
           <div id="wrapper">
@@ -108,6 +117,7 @@ class IndexPage extends React.Component {
           <div id="bg"></div>
         </div>
       </Layout>
+      </Provider>
     )
   }
 }

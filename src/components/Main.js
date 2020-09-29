@@ -3,8 +3,16 @@ import React from 'react'
 import pic01 from '../images/pic01.jpg'
 import pic02 from '../images/pic02.jpg'
 import pic03 from '../images/pic03.jpg'
+import { connect } from 'react-redux';
+import { makeApiCall } from '../actions';
+
 
 class Main extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(makeApiCall());
+  }
+
   render() {
     let close = (
       <div
@@ -180,5 +188,13 @@ Main.propTypes = {
   timeout: PropTypes.bool,
   setWrapperRef: PropTypes.func.isRequired,
 }
+const mapStateToProps = state => {
+  return {
+    weatherdata: state.weatherdata,
+    isLoading: state.isLoading,
+    error: state.error
+  }
+}
 
-export default Main
+export default connect(mapStateToProps)(Main);
+
