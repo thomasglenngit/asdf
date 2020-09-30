@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import pic01 from '../images/pic01.jpg'
 import pic02 from '../images/pic02.jpg'
 import pic03 from '../images/pic03.jpg'
 import { connect } from 'react-redux';
 import { makeApiCall } from './../actions';
+
 
 
 class Main extends React.Component {
@@ -15,7 +16,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { weatherdata } = this.props;
+    const { error, isLoading, weatherdata } = this.props;
     console.log( weatherdata );
 
     let close = (

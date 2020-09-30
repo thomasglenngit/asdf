@@ -1,4 +1,5 @@
 import * as c from './ActionTypes';
+import APIKEY from './../ApiCall';
 
 export const requestWeather = () => ({
   type: c.REQUEST_WEATHERDATA
@@ -17,7 +18,7 @@ export const getWeatherFailure = (error) => ({
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestWeather);
-    return fetch('https://api.openweathermap.org/data/2.5/weather?q=seattle&appid=') 
+    return fetch(`https://api.openweathermap.org/data/2.5/weather?q=seattle&appid=${APIKEY}`) 
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {

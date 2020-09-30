@@ -19,5 +19,14 @@ module.exports = {
       },
     },
     'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-source-openweathermap`,
+      options: {
+        apikey: 'e0757ff5ddff229c6b09c2b18d2c5583',
+        location: 'Portland',
+        units: 'metric',
+        type: 'forecast'
+      },
+    },
   ],
 }
