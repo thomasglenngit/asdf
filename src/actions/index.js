@@ -4,9 +4,9 @@ export const requestWeather = () => ({
   type: c.REQUEST_WEATHERDATA
 });
 
-export const getWeatherSuccess = (weather) => ({
+export const getWeatherSuccess = (weatherdata) => ({
   type: c.GET_WEATHERDATA_SUCCESS,
-  weather
+  weatherdata
 });
 
 export const getWeatherFailure = (error) => ({
@@ -17,12 +17,11 @@ export const getWeatherFailure = (error) => ({
 export const makeApiCall = () => {
   return dispatch => {
     dispatch(requestWeather);
-    return fetch(`https://api.openweathermap.org/data/2.5/weather?q=portland&appid=${process.env.REACT_APP_API_KEY}`) 
+    return fetch('https://api.openweathermap.org/data/2.5/weather?q=seattle&appid=') 
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {
           dispatch(getWeatherSuccess(jsonifiedResponse.results));
-          console.log(jsonifiedResponse.results);
         })
       .catch((error) => {
         dispatch(getWeatherFailure(error));

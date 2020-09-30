@@ -4,25 +4,29 @@ import pic01 from '../images/pic01.jpg'
 import pic02 from '../images/pic02.jpg'
 import pic03 from '../images/pic03.jpg'
 import { connect } from 'react-redux';
-import { makeApiCall } from '../actions';
+import { makeApiCall } from './../actions';
 
 
 class Main extends React.Component {
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(makeApiCall());
   }
 
   render() {
+    const { weatherdata } = this.props;
+    console.log( weatherdata );
+
     let close = (
       <div
-        className="close"
-        onClick={() => {
-          this.props.onCloseArticle()
-        }}
+      className="close"
+      onClick={() => {
+        this.props.onCloseArticle()
+      }}
       ></div>
-    )
-
+      )
+      
     return (
       <div
         ref={this.props.setWrapperRef}

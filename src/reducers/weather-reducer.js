@@ -2,7 +2,7 @@ import * as c from '../actions/ActionTypes';
 
 let initialState = {
   isLoading: false,
-  weather: [],
+  weatherdata: [],
   error: null
 }
 
@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
     case c.GET_WEATHERDATA_SUCCESS:
       return Object.assign({}, state, {
         isLoading: false,
-        weather: action.weatherdata
+        weatherdata: action.weatherdata
       });
     case c.GET_WEATHERDATA_FAILURE:
       return Object.assign({}, state, {
