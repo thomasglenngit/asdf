@@ -6,4 +6,5 @@ yarn-error.log
 # Build directory
 /public
 .env
+.ApiCall.js
 .DS_Store
